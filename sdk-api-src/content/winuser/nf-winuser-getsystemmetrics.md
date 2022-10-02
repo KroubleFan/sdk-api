@@ -1,7 +1,7 @@
 ---
 UID: NF:winuser.GetSystemMetrics
-title: GetSystemMetrics function (winuser.h)
-description: Retrieves the specified system metric or system configuration setting.
+标题: GetSystemMetrics 函数 (winuser.h)
+描述: 检索指定的系统值和系统配置信息.
 helpviewer_keywords: ["GetSystemMetrics","GetSystemMetrics function [Windows and Messages]","SM_ARRANGE","SM_CLEANBOOT","SM_CMONITORS","SM_CMOUSEBUTTONS","SM_CONVERTIBLESLATEMODE","SM_CXBORDER","SM_CXCURSOR","SM_CXDLGFRAME","SM_CXDOUBLECLK","SM_CXDRAG","SM_CXEDGE","SM_CXFIXEDFRAME","SM_CXFOCUSBORDER","SM_CXFRAME","SM_CXFULLSCREEN","SM_CXHSCROLL","SM_CXHTHUMB","SM_CXICON","SM_CXICONSPACING","SM_CXMAXIMIZED","SM_CXMAXTRACK","SM_CXMENUCHECK","SM_CXMENUSIZE","SM_CXMIN","SM_CXMINIMIZED","SM_CXMINSPACING","SM_CXMINTRACK","SM_CXPADDEDBORDER","SM_CXSCREEN","SM_CXSIZE","SM_CXSIZEFRAME","SM_CXSMICON","SM_CXSMSIZE","SM_CXVIRTUALSCREEN","SM_CXVSCROLL","SM_CYBORDER","SM_CYCAPTION","SM_CYCURSOR","SM_CYDLGFRAME","SM_CYDOUBLECLK","SM_CYDRAG","SM_CYEDGE","SM_CYFIXEDFRAME","SM_CYFOCUSBORDER","SM_CYFRAME","SM_CYFULLSCREEN","SM_CYHSCROLL","SM_CYICON","SM_CYICONSPACING","SM_CYKANJIWINDOW","SM_CYMAXIMIZED","SM_CYMAXTRACK","SM_CYMENU","SM_CYMENUCHECK","SM_CYMENUSIZE","SM_CYMIN","SM_CYMINIMIZED","SM_CYMINSPACING","SM_CYMINTRACK","SM_CYSCREEN","SM_CYSIZE","SM_CYSIZEFRAME","SM_CYSMCAPTION","SM_CYSMICON","SM_CYSMSIZE","SM_CYVIRTUALSCREEN","SM_CYVSCROLL","SM_CYVTHUMB","SM_DBCSENABLED","SM_DEBUG","SM_DIGITIZER","SM_IMMENABLED","SM_MAXIMUMTOUCHES","SM_MEDIACENTER","SM_MENUDROPALIGNMENT","SM_MIDEASTENABLED","SM_MOUSEHORIZONTALWHEELPRESENT","SM_MOUSEPRESENT","SM_MOUSEWHEELPRESENT","SM_NETWORK","SM_PENWINDOWS","SM_REMOTECONTROL","SM_REMOTESESSION","SM_SAMEDISPLAYFORMAT","SM_SECURE","SM_SERVERR2","SM_SHOWSOUNDS","SM_SHUTTINGDOWN","SM_SLOWMACHINE","SM_STARTER","SM_SWAPBUTTON","SM_SYSTEMDOCKED","SM_TABLETPC","SM_XVIRTUALSCREEN","SM_YVIRTUALSCREEN","_win32_getsystemmetrics","base.getsystemmetrics","getsystemmetrics_cpp","winmsg.getsystemmetrics","winui.getsystemmetrics","winuser/GetSystemMetrics"]
 old-location: winmsg\getsystemmetrics.htm
 tech.root: winmsg
@@ -50,25 +50,28 @@ api_name:
 req.apiset: ext-ms-win-ntuser-sysparams-ext-l1-1-0 (introduced in Windows 8)
 ---
 
-# GetSystemMetrics function
+# GetSystemMetrics 函数
 
 
-## -description
+## -作用
 
-Retrieves the specified 
-    system metric or system configuration setting.
+<p>检索指定的系统值和系统配置信息</p>
+<strong>注意：此函数检索到的所有尺寸均以像素为单位。</strong>
 
-Note that all dimensions 
-    retrieved by <b>GetSystemMetrics</b> are in pixels.
+## -函数原型
+<span class = "language">C++</span>
+<pre><code class="lang-cpp">int GetSystemMetrics(
+  [in] int nIndex
+);</pre>
 
-## -parameters
+## -决定结果的参数
 
-### -param nIndex [in]
+### -参数nIndex [用户输入]
 
-Type: <b>int</b>
+类型: <b>int（整型）</b>
 
-The system metric or configuration setting to be retrieved. This parameter can be one of the following values. 
-      Note that all SM_CX* values are widths and all SM_CY* values are heights. Also note that all settings 
+要检索的系统值或配置信息. 此参数可以是下列值之一。
+      请注意任何以SM_CX开头的值获取的都是宽度，任何以SM_CY*开头的值获取的都是高度. Also note that all settings 
       designed to return Boolean data represent <b>TRUE</b> as any nonzero value, and <b>FALSE</b> as a zero value.
 
 <table>
@@ -1416,15 +1419,15 @@ The device is ready to receive digitizer input.
 </table>
  
 
-This API is not DPI aware, and should not be used if the calling thread is per-monitor DPI aware. For the DPI-aware version of this API, see <a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetricsfordpi">GetSystemMetricsForDPI</a>. For more information on DPI awareness, see <a href="/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows">the Windows High DPI documentation.</a>
+此API函数不识别<a href="[/windows/desktop/api/winuser/nf-winuser-getsystemmetricsfordpi](https://cn.bing.com/search?q=DPI&form=ANNTH1&refig=55b62990099a464fa52a841f3a33a782)">DPI</a>，如果使用此API函数去获取DPI信息，则不应使用此API函数，而是使用此API函数的DPI版本, 参见 <a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetricsfordpi">GetSystemMetricsForDPI函数</a>. 更多关于DPI的信息请参见 <a href="/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows">Windows DPI 文档.</a>
 
 
 
-#### Examples
+#### 使用样例
 
-The following example uses the 
-<a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetrics">GetSystemMetrics</a> function to determine whether a mouse is installed and whether the mouse buttons are swapped. The example also uses the 
-<a href="/windows/desktop/api/winuser/nf-winuser-systemparametersinfoa">SystemParametersInfo</a> function to retrieve the mouse threshold and speed. It displays the information in the console.
+下方样例使用
+<a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetrics">GetSystemMetrics</a> 函数去判断此电脑是否使用了鼠标或系统是否将鼠标左右键功能互换. 此样例同时使用了
+<a href="/windows/desktop/api/winuser/nf-winuser-systemparametersinfoa">SystemParametersInfo</a> 函数来获取鼠标阈值和速度，并将其输出在控制台上.
 
 
 ``` syntax
@@ -1440,7 +1443,9 @@ void main()
    fResult = GetSystemMetrics(SM_MOUSEPRESENT); 
  
    if (fResult == 0) 
-      printf("No mouse installed.\n"); 
+   {
+      printf("No mouse installed.\n");
+   }
    else 
    { 
       printf("Mouse installed.\n");
@@ -1450,9 +1455,13 @@ void main()
       fResult = GetSystemMetrics(SM_SWAPBUTTON); 
  
       if (fResult == 0) 
+      {
          printf("Buttons not swapped.\n"); 
-      else printf("Buttons swapped.\n");
- 
+      }
+      else
+      {    
+         printf("Buttons swapped.\n");
+      }
       // Get the mouse speed and the threshold values. 
  
       fResult = SystemParametersInfo(
@@ -1472,14 +1481,14 @@ void main()
 ```
 
 
-## -see-also
+## 参见
 
-<a href="/windows/desktop/api/winuser/nf-winuser-enumdisplaymonitors">EnumDisplayMonitors</a>
-
-
-
-<a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetricsfordpi">GetSystemMetricsForDPI</a>
+<a href="/windows/desktop/api/winuser/nf-winuser-enumdisplaymonitors">EnumDisplayMonitors函数</a>
 
 
 
-<a href="/windows/desktop/api/winuser/nf-winuser-systemparametersinfoa">SystemParametersInfo</a>
+<a href="/windows/desktop/api/winuser/nf-winuser-getsystemmetricsfordpi">GetSystemMetricsForDPI函数</a>
+
+
+
+<a href="/windows/desktop/api/winuser/nf-winuser-systemparametersinfoa">SystemParametersInfo函数</a>
